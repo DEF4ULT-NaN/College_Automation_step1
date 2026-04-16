@@ -1,0 +1,91 @@
+# College Bell System - Library Dependencies
+# ==========================================
+# Install these libraries in the order listed below.
+
+# --- Core Libraries ---
+
+# Library: LiquidCrystal I2C
+# Description: I2C communication library for HD44780-based LCD displays
+# Version: 1.1.2
+# Author: Frank de Brabander
+# Maintainer: Marco Schwartz
+# Website: https://github.com/marcoschwartz/LiquidCrystal_I2C
+# Architecture: avr
+LiquidCrystal I2C@1.1.2
+
+# Library: RTClib
+# Description: RTC library supporting DS1307, DS3231, PCF8523, PCF8563
+# Version: 2.1.4
+# Author: Adafruit
+# Maintainer: Adafruit
+# Website: https://github.com/adafruit/RTClib
+# Architecture: all
+RTClib@2.1.4
+
+# --- Dependencies (auto-installed) ---
+
+# Adafruit BusIO is required by RTClib
+# Included here for reference
+Adafruit BusIO@1.17.4
+
+# =============================================================================
+# INSTALLATION INSTRUCTIONS
+# =============================================================================
+
+# Option 1: Using Arduino IDE (GUI)
+# ---------------------------------
+# 1. Open Arduino IDE
+# 2. Go to: Sketch → Include Library → Manage Libraries
+# 3. Search for each library name and click Install:
+#    - "LiquidCrystal I2C" by Frank de Brabander
+#    - "RTClib" by Adafruit
+#    - "Adafruit BusIO" by Adafruit (usually auto-installed)
+
+# Option 2: Using arduino-cli (Command Line)
+# -------------------------------------------
+# Run these commands in your terminal:
+#
+#   arduino-cli lib install "LiquidCrystal I2C"
+#   arduino-cli lib install "RTClib"
+#   arduino-cli lib install "Adafruit BusIO"
+#
+# Or install all at once:
+#   arduino-cli lib install "LiquidCrystal I2C" "RTClib" "Adafruit BusIO"
+
+# Option 3: Manual Installation
+# -----------------------------
+# 1. Download the .zip from GitHub
+# 2. In Arduino IDE: Sketch → Include Library → Add .ZIP Library
+# 3. Select the downloaded file
+# 4. Repeat for each library
+
+# =============================================================================
+# HARDWARE REQUIREMENTS
+# =============================================================================
+
+# - Arduino Uno (or AVR-compatible board)
+# - DS1307 RTC module with coin cell battery
+# - 16x2 I2C LCD display (default I2C address: 0x3F)
+# - Active buzzer (connected to digital pin 2)
+# - USB cable for programming
+
+# =============================================================================
+# BOARD SETTINGS
+# =============================================================================
+
+# Board: Arduino Uno
+# Processor: ATmega328P (Old Bootloader recommended if upload issues occur)
+# Port: Select your connected COM port
+# Programmer: AVRISP mkII (or default USBasp)
+
+# =============================================================================
+# I2C ADDRESS NOTES
+# =============================================================================
+
+# Default I2C addresses used:
+#   - LCD: 0x3F (common alternatives: 0x27)
+#   - RTC: 0x68 (standard DS1307/DS3231 address)
+
+# If LCD doesn't display, run an I2C scanner to find the correct address,
+# then update line 4 in COLLEGE_BELL.ino:
+#   LiquidCrystal_I2C lcd(0x3F, 16, 2);  // <-- change 0x3F to your address
